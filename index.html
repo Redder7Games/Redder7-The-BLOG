@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A complete blog about the Redder7 series, its characters, episodes, powers, comedy, and game adaptations.">
+  <title>Redder7: The Story So Far</title>
+  <style>
+:root {
+  --bg: #f4f1ec;
+  --paper: #fffdf9;
+  --ink: #171717;
+  --muted: #6f6a64;
+  --red: #e51b23;
+  --yellow: #f2d34f;
+  --line: #ded8d0;
+  --shadow: 0 18px 50px rgba(37, 27, 18, 0.10);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--bg);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.78;
+}
+
+img { display: block; max-width: 100%; }
+
+a { color: inherit; }
+
+.site-header {
+  min-height: 68px;
+  padding: 0 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #121212;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.brand {
+  text-decoration: none;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+.site-header nav {
+  display: flex;
+  gap: 24px;
+}
+
+.site-header nav a {
+  color: #ddd;
+  text-decoration: none;
+  font-size: .92rem;
+}
+
+.site-header nav a:hover { color: white; }
+
+.hero {
+  position: relative;
+  min-height: 600px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(229,27,35,.35), transparent 35%),
+    radial-gradient(circle at 80% 80%, rgba(242,211,79,.18), transparent 40%),
+    linear-gradient(135deg, #111, #292421);
+  color: white;
+}
+
+.hero-art {
+  position: absolute;
+  inset: 0;
+  opacity: .44;
+  overflow: hidden;
+}
+
+.hero-art img {
+  position: absolute;
+  height: 96%;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 25px rgba(0,0,0,.45));
+}
+
+.hero-metal { left: -2%; bottom: -18%; }
+.hero-tinfoil { right: 1%; bottom: -18%; }
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  width: min(920px, 88vw);
+  padding: 80px 0;
+  text-align: center;
+}
+
+.tag {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .74rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  color: var(--red);
+}
+
+.hero h1 {
+  max-width: 900px;
+  margin: 18px auto 20px;
+  font-size: clamp(2.7rem, 6vw, 5.8rem);
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+
+.dek {
+  max-width: 750px;
+  margin: 0 auto;
+  color: #e3ded8;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  line-height: 1.55;
+}
+
+.byline {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: #bcb6b0;
+  font: .87rem Arial, Helvetica, sans-serif;
+}
+
+.page-grid {
+  width: min(1180px, 92vw);
+  margin: 70px auto;
+  display: grid;
+  grid-template-columns: minmax(0, 760px) 280px;
+  gap: 70px;
+  align-items: start;
+}
+
+article {
+  padding: 54px 62px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+article p { margin: 0 0 1.45em; }
+
+.lead {
+  font-size: 1.45rem;
+  line-height: 1.58;
+}
+
+h2 {
+  margin: 2.4em 0 .65em;
+  font-size: clamp(1.85rem, 4vw, 2.65rem);
+  line-height: 1.12;
+  letter-spacing: -.025em;
+}
+
+h3 {
+  margin: .5em 0 .6em;
+  line-height: 1.2;
+}
+
+blockquote {
+  margin: 2.2em 0;
+  padding: 12px 0 12px 30px;
+  border-left: 6px solid var(--red);
+  font-size: 1.65rem;
+  line-height: 1.4;
+  font-style: italic;
+}
+
+.wide-figure { margin: 54px 0; }
+
+.image-pair {
+  min-height: 420px;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: end;
+  background: #101010;
+  overflow: hidden;
+}
+
+.image-pair > div {
+  min-height: 350px;
+  position: relative;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+
+.image-pair img {
+  max-height: 350px;
+  width: 100%;
+  object-fit: contain;
+}
+
+.image-pair span {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  padding: 6px 10px;
+  color: white;
+  background: rgba(0,0,0,.72);
+  font: 700 .8rem Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font: .88rem/1.5 Arial, Helvetica, sans-serif;
+}
+
+.character-grid {
+  margin: 34px 0 46px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.character-grid figure {
+  margin: 0;
+  padding: 12px;
+  background: #f3eee7;
+  border: 1px solid var(--line);
+}
+
+.character-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: contain;
+  background: white;
+}
+
+.character-grid figcaption {
+  min-height: 78px;
+}
+
+.stand-feature {
+  margin: 45px 0;
+  padding: 26px;
+  display: grid;
+  grid-template-columns: 1fr 1.35fr 1fr;
+  gap: 20px;
+  align-items: center;
+  background: #17131f;
+  color: white;
+}
+
+.stand-feature img {
+  max-height: 285px;
+  width: 100%;
+  object-fit: contain;
+}
+
+.stand-feature p {
+  margin-bottom: 0;
+  color: #d8d0df;
+  line-height: 1.6;
+}
+
+.timeline {
+  margin: 30px 0;
+  border-top: 1px solid var(--line);
+}
+
+.timeline div {
+  padding: 18px 0;
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.timeline span {
+  color: var(--red);
+  font: 900 .82rem Arial, Helvetica, sans-serif;
+  letter-spacing: .08em;
+}
+
+.timeline p { margin: 0; }
+
+.note {
+  margin: 34px 0;
+  padding: 24px 28px;
+  background: #fff6cf;
+  border-left: 5px solid var(--yellow);
+}
+
+.note p { margin: 8px 0 0; }
+
+.styled-list {
+  padding-left: 1.2em;
+}
+
+.styled-list li {
+  margin-bottom: .65em;
+  padding-left: .35em;
+}
+
+.game-card {
+  margin: 34px 0;
+  padding: 34px;
+  display: grid;
+  grid-template-columns: 1fr 150px;
+  gap: 30px;
+  align-items: center;
+  color: white;
+  background: linear-gradient(135deg, #371111, #101010);
+}
+
+.game-card ol {
+  margin-bottom: 0;
+  padding-left: 1.25em;
+}
+
+.game-orb {
+  width: 130px;
+  height: 130px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: white;
+  background: var(--red);
+  box-shadow: 0 0 0 14px rgba(255,255,255,.08);
+  font: 900 2.3rem Arial, Helvetica, sans-serif;
+}
+
+.ending {
+  margin-top: 55px;
+  padding: 42px;
+  color: white;
+  background: #171717;
+}
+
+.ending h2 { margin-top: .45em; }
+
+.sidebar {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.sidebar-card {
+  margin-bottom: 24px;
+  padding: 26px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.sidebar-card h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.45rem;
+}
+
+.sidebar-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.sidebar-card a {
+  display: block;
+  padding: 10px 0;
+  color: #403c37;
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+
+.sidebar-card a:last-child { border-bottom: 0; }
+.sidebar-card a:hover { color: var(--red); }
+
+.sticky {
+  position: sticky;
+  top: 24px;
+}
+
+footer {
+  padding: 50px 5vw;
+  text-align: center;
+  background: #111;
+  color: #eee;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+footer p {
+  margin: 6px 0 0;
+  color: #999;
+}
+
+@media (max-width: 900px) {
+  .site-header {
+    padding: 18px 5vw;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .site-header nav {
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .page-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .sidebar { order: -1; }
+  .sticky { position: static; }
+
+  .sidebar-card.sticky {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 18px;
+  }
+
+  .sidebar-card.sticky h3 {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 650px) {
+  .site-header nav { display: none; }
+
+  .hero { min-height: 560px; }
+
+  .hero-art { opacity: .24; }
+  .hero-art img { height: 72%; }
+  .hero-metal { left: -24%; }
+  .hero-tinfoil { right: -20%; }
+
+  article { padding: 36px 24px; }
+
+  .character-grid,
+  .image-pair,
+  .stand-feature,
+  .game-card {
+    grid-template-columns: 1fr;
+  }
+
+  .stand-feature img { max-height: 220px; }
+
+  .game-orb {
+    margin: 0 auto;
+  }
+
+  .timeline div {
+    grid-template-columns: 70px 1fr;
+  }
+
+  .sidebar-card.sticky {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">REDDER7 BLOG</a>
+  <nav aria-label="Main navigation">
+    <a href="#story">Story</a>
+    <a href="#characters">Characters</a>
+    <a href="#episodes">Episodes</a>
+    <a href="#game">Game</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-art" aria-hidden="true">
+      <img class="hero-metal" src="assets/metal-man.png" alt="">
+      <img class="hero-tinfoil" src="assets/tinfoil-man.png" alt="">
+    </div>
+    <div class="hero-copy">
+      <span class="tag">SERIES SPOTLIGHT</span>
+      <h1>Redder7: The Series Where Aura, Time Travel, and Terrible Ideas Collide</h1>
+      <p class="dek">Everything I currently know about the characters, story, comedy, powers, and game adaptations behind the chaotic world of Redder7.</p>
+      <div class="byline">
+        <span>By the creator of Redder7</span>
+        <span>•</span>
+        <time datetime="2026-07-29">July 29, 2026</time>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-grid">
+    <article>
+      <p class="lead">Redder7 started with a simple setup: Redder7 and his floating orb companion, Kevin, go on strange adventures. That setup did not stay simple for long.</p>
+
+      <p>The series has grown into an action-comedy involving metallic supervillains, the Underworld, aura battles, Stands, time travel, Dragon Balls, planetary destruction, resurrection, and one very unfortunate character being turned into a radar.</p>
+
+      <p>What makes the series work is that it never acts embarrassed by how strange it is. A serious fight can be followed by a joke about the budget. A powerful transformation can become an excuse to replay music constantly. Earth can explode, and the gang's next decision can somehow make the situation worse.</p>
+
+      <blockquote>
+        “Redder7 does not hide its chaos. It turns the chaos into the identity of the series.”
+      </blockquote>
+
+      <section id="story">
+        <h2>Redder7 and Kevin are the heart of the story</h2>
+
+        <p>Redder7 is the main hero, while Kevin the Orb is his most consistent companion. Kevin is not just a mascot or a sidekick. He travels with Redder7, helps during fights, senses danger, questions bad plans, and stays beside him when the rest of the group is gone.</p>
+
+        <p>Their partnership becomes even more important once aura is introduced. Redder7 learns to use aura through training. Kevin later develops an aura of his own, allowing the two of them to combine their power into a synchronized dual aura with a different sound from Redder7's solo transformation.</p>
+
+        <p>Boss and Greg complete the main gang. Tinfoil Man kills both of them in Episode 6, leaving Redder7 and Kevin alone for several episodes. They are eventually revived with the Dragon Balls in Episode 13. After returning, Boss and Greg learn aura too, leading to all four members synchronizing their power together.</p>
+      </section>
+
+      <figure class="wide-figure villain-shot">
+        <div class="image-pair">
+          <div>
+            <img src="assets/metal-man.png" alt="Artwork of Metal Man, a red mechanical villain.">
+            <span>Metal Man</span>
+          </div>
+          <div>
+            <img src="assets/tinfoil-man.png" alt="Artwork of Tinfoil Man, a grey and yellow metallic villain.">
+            <span>Tinfoil Man</span>
+          </div>
+        </div>
+        <figcaption>The metallic villains repeatedly turn the gang's adventures into disasters.</figcaption>
+      </figure>
+
+      <section id="characters">
+        <h2>The metallic villains keep raising the stakes</h2>
+
+        <p>Tinfoil Man is the aura-obsessed villain of the series. He does not simply power up—he aura farms. He becomes furious whenever Redder7 or his friends survive something that should have defeated them. His biggest early action is killing Boss and Greg, but by Episode 20 he is powerful enough to aura farm in front of the moon and separate the gang across different planets.</p>
+
+        <p>Metal Man is more direct. He attacks the heroes, steals important objects, uses magnetism, and interferes with the Dragon Balls. During Episode 20, he uses a Kamehameha against Redder7. The attack weakens Redder7, but Redder7 carefully observes it, possibly setting up a future development.</p>
+
+        <p>Aluminum Man is Tinfoil Man's brother, but he is much kinder. He comforts Jimmy, helps a red child, and generally acts like one of the only people who understands basic kindness. Naturally, the story rewards him by turning him into a Dragon Ball radar because Boss thinks it will be useful.</p>
+
+        <h2>The Oddballs bring crossover chaos</h2>
+
+        <p>The Oddballs are Jimmy, Jonathan, and Raggie. Raggie introduces the group by explaining that they bomb random places, steal things, and cause destruction for fun. Jimmy is the only member who objects because he does not want innocent people to get hurt.</p>
+
+        <p>Jonathan insults Jimmy for speaking up. Aluminum Man comforts him. Then Jimmy discovers Star Platinum and decides that being a pacifist does not mean his Stand cannot pass a fist. He stops time, prevents another bombing, and attacks Jonathan and Raggie.</p>
+
+        <div class="character-grid">
+          <figure>
+            <img src="assets/jimmy.webp" alt="Jimmy wearing a green outfit and tall green hat.">
+            <figcaption><strong>Jimmy</strong><br>A pacifist with an extremely powerful loophole.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/jonathan.webp" alt="Jonathan in a yellow shirt and orange shoes.">
+            <figcaption><strong>Jonathan</strong><br>One of the Oddballs' destructive members.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/raggie.webp" alt="Raggie, a paper-like character in blue clothing.">
+            <figcaption><strong>Raggie</strong><br>The cheerful recruiter for random destruction.</figcaption>
+          </figure>
+        </div>
+
+        <p>The crossover continues when Jimmy and Kevin fall into the Underworld. Jotaro appears, creating a chase and battle involving stopped time, Stand attacks, and a top hat that weighs around 500 pounds. Licensing and budget problems are treated as jokes inside the episode instead of being ignored.</p>
+
+        <div class="stand-feature">
+          <img src="assets/star-platinum.webp" alt="Star Platinum in a fighting pose.">
+          <div>
+            <span class="tag">UNDERWORLD CROSSOVER</span>
+            <h3>Time stop becomes part of the chaos</h3>
+            <p>Jimmy's discovery of Star Platinum changes him from the group's mistreated pacifist into someone capable of physically stopping the Oddballs whenever they go too far.</p>
+          </div>
+          <img src="assets/jotaro.webp" alt="Jotaro standing in his long dark coat.">
+        </div>
+      </section>
+
+      <section id="episodes">
+        <h2>How the first twenty episodes grow in scale</h2>
+
+        <p>The earliest episodes establish Redder7, Kevin, Metal Man, and the Underworld. Episode 4 is deliberately short because of “budget cuts,” while Episode 5 focuses on escaping the Underworld and returning home.</p>
+
+        <div class="timeline">
+          <div><span>EP 6</span><p>Tinfoil Man arrives and kills Boss and Greg.</p></div>
+          <div><span>EP 7</span><p>A revival box turns out to be a scam, then Metal Man robs the heroes.</p></div>
+          <div><span>EP 8–9</span><p>The Oddballs, Star Platinum, Jotaro, and the Underworld crossover enter the story.</p></div>
+          <div><span>EP 10–12</span><p>Redder7 gains aura, abuses its music, and develops dual aura with Kevin.</p></div>
+          <div><span>EP 13</span><p>The Dragon Balls revive Boss and Greg. The Oddballs stay dead because their names were forgotten.</p></div>
+          <div><span>EP 15</span><p>The full gang learns to synchronize aura.</p></div>
+          <div><span>EP 16–17</span><p>A trip to World War II changes the timeline, destroys Earth, and launches the gang toward Mars.</p></div>
+          <div><span>EP 18–19</span><p>The Dragon Balls scatter across planets and Aluminum Man becomes a radar.</p></div>
+          <div><span>EP 20</span><p>Tinfoil Man's aura separates the gang across planets before both groups reunite on Mars.</p></div>
+        </div>
+
+        <aside class="note">
+          <strong>What about Episode 14?</strong>
+          <p>The exact plot has not been established in the information currently available. It sits between the revival of Boss and Greg and the group's aura training in Episode 15.</p>
+        </aside>
+      </section>
+
+      <section>
+        <h2>Why the comedy works</h2>
+
+        <p>The main joke behind Redder7 is escalation. A normal problem almost never stays normal.</p>
+
+        <ul class="styled-list">
+          <li>A mall visit becomes a scam and a robbery.</li>
+          <li>A resurrection plan becomes a Dragon Ball hunt.</li>
+          <li>A time-machine trip destroys Earth.</li>
+          <li>A kind character is turned into navigation equipment.</li>
+          <li>An aura contest separates people across planets.</li>
+        </ul>
+
+        <p>The rough production style is also part of the comedy. Budget cuts, music cues, licensing problems, missing sprites, and unusually short episodes are not hidden. They become jokes inside the show.</p>
+      </section>
+
+      <section id="game">
+        <h2>Redder's Quest turns the series into a game</h2>
+
+        <p>The world of Redder7 has also been adapted into a browser platformer called <em>Redder's Quest</em>. The original build is a colorful side-scrolling adventure where the player runs through levels, collects coins, jumps across gaps, and stomps enemies.</p>
+
+        <p><em>Redder's Quest: Underworld Descent</em> expands the idea with six darker levels, lava, spikes, flying enemies, shields, double jumping, speed boosts, extra lives, a hidden Ancient Sigil, and a secret stage.</p>
+
+        <div class="game-card">
+          <div>
+            <span class="tag">GAME ADAPTATION</span>
+            <h3>Three worlds are planned</h3>
+            <ol>
+              <li>The Overworld</li>
+              <li>The Underworld</li>
+              <li>A boss world featuring Tinfoil Man and possibly Metal Man</li>
+            </ol>
+          </div>
+          <div class="game-orb">R7</div>
+        </div>
+
+        <p>Future improvements include better visuals, improved sprites, a 3D Redder7 model, checkpoints, music, a world-selection lobby, secret stages, and support for more devices.</p>
+      </section>
+
+      <section class="ending">
+        <span class="tag">FINAL THOUGHTS</span>
+        <h2>Redder7 works because it fully commits to being unpredictable</h2>
+
+        <p>The series can move from a mall scam to an anime battle, from the Underworld to World War II, and from Earth's destruction to a Dragon Ball search across space.</p>
+
+        <p>By Episode 20, it has become an interplanetary action-comedy about resurrection, time travel, Stands, aura, Dragon Balls, metallic villains, and a hero who may be learning new techniques simply by surviving them.</p>
+
+        <p>Redder7 and Kevin are still in the middle of everything—and judging by what has happened so far, the next problem will probably be even worse.</p>
+      </section>
+    </article>
+
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <span class="tag">ABOUT THE SERIES</span>
+        <h3>Redder7</h3>
+        <p>An action-comedy built around strange adventures, recurring metal villains, anime-inspired powers, and deliberately chaotic storytelling.</p>
+      </div>
+
+      <div class="sidebar-card sticky">
+        <h3>In this article</h3>
+        <a href="#story">Redder7 and Kevin</a>
+        <a href="#characters">Characters and villains</a>
+        <a href="#episodes">Episode timeline</a>
+        <a href="#game">Redder's Quest</a>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <strong>REDDER7 BLOG</strong>
+  <p>Created for the Redder7 series project.</p>
+</footer>
+
+</body>
+</html>
